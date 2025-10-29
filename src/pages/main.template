@@ -4,4 +4,3 @@
         <span slot="question">ababa</span>
     </question-span>
 </div>
-<script src="../elements/app/main.js" type="module"> </script>
