@@ -1,12 +1,15 @@
+import generator from "../../scripts/generator-questions/main";
+
 export default class Task{
     #text;
-    #canable;
-    constructor(){
-
+    /**
+     * 
+     * @param {function} canable 
+     */
+    constructor(canable){
+        this.#text = generator();
+        if(!canable()){
+            throw new Error("this is not canable")
+        }
     }
-
-    #isCanable(){
-
-    };
-    
 }

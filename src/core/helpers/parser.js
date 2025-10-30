@@ -1,5 +1,3 @@
-import { WHITE_SPACES } from "./constants.js";
-
 /**
  * 
  * @param {string} text 
@@ -8,11 +6,9 @@ import { WHITE_SPACES } from "./constants.js";
  */
 export default function TaskParser(text, values) {
     let countOfChangebles = 0;
-    const parsedText = text.split(WHITE_SPACES).map((e) => {
-        if (e === "%d") {
-            return values[countOfChangebles++];
-        }
-        return e;
+    // Use a regex to replace %d with actual values
+    const parsedText = text.replace(/%d/g, () => {
+        return values[countOfChangebles++];
     });
-    return parsedText.join(" ");
+    return parsedText;
 }

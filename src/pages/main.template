@@ -1,6 +1,6 @@
 <div>
     <h1>Hi</h1>
     <question-span>
-        <span slot="question">ababa</span>
+        
     </question-span>
 </div>

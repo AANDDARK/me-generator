@@ -1,0 +1,1 @@
+document.getElementById("question-text").attributes.slot
