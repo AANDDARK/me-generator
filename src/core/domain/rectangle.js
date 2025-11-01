@@ -1,4 +1,4 @@
-import ShapeCuboid from "./dto/shapeCuboid";
+import ShapeCuboid from "./dto/shapeCuboid.js";
 
 export default class Rectangle extends ShapeCuboid {
   #sides;
@@ -38,12 +38,12 @@ export default class Rectangle extends ShapeCuboid {
     }
   }
   area() {
-    return this.#sides[0] * this.#sides[1];
+    return Math.round(this.#sides[0] * this.#sides[1]);
   }
   perimeter() {
-    return this.#sides[0] * 2 + this.#sides[1] * 2;
+    return Math.round(this.#sides[0] * 2 + this.#sides[1] * 2);
   }
   diagonal() {
-    return Math.sqrt(this.#sides[0] ^ (2 + this.#sides[1]) ^ 2);
+    return Math.round(Math.sqrt(this.#sides[0] ** 2 + this.#sides[1] ** 2));
   }
 }

@@ -1,0 +1,9 @@
+<div>
+    <slot name="question"></slot>
+    <div id="answer-inputs">
+        <input></input>
+    </div>
+    <div>
+        <button id="comp-button">compleate</button>
+    </div>
+</div>

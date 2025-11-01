@@ -8,15 +8,14 @@ export default class Square extends ShapeCuboid {
    */
   constructor(sides) {
     super(`square`);
-    this.#sidesAgrigator(sides)
+    this.#sides = this.#sidesAgrigator(sides);
     this.validate();
   }
   validate() {
-    if(!this.#sides.length === 4) throw new Error("the square need have 4 sides");
-    if (!this.#sides.every((e) => e === e[0])) {
+    if (this.#sides.length !== 4) throw new Error("the square need have 4 sides");
+    if (!this.#sides.every((e) => e === this.#sides[0])) {
       throw new Error("all sides need be equal");
     }
-    // Check if all sides are positive numbers
     if (
       this.#sides.some(
         (side) => typeof side !== "number" || side <= 0 || !isFinite(side),
@@ -26,13 +25,13 @@ export default class Square extends ShapeCuboid {
     }
   }
    area() {
-    return this.#sides[0] * this.#sides[1];
+    return Math.round(this.#sides[0] * this.#sides[1]);
   }
   perimeter() {
-    return this.#sides[0] * 4;
+    return Math.round(this.#sides[0] * 4);
   }
   diagonal() {
-    return Math.sqrt(2) * this.#sides[0];
+    return Math.round(Math.sqrt(2) * this.#sides[0]);
   }
   /**
    * 

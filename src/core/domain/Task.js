@@ -33,4 +33,12 @@ export default class Task {
       throw new Error("Task answer is required");
     }
   }
+
+  get text() {
+    return this.#text;
+  }
+
+  get answer() {
+    return this.#answer;
+  }
 }

@@ -1,6 +1,6 @@
 export default class ShapeCuboid {
   constructor(name) {
-    if (new.target === Shape) {
+    if (new.target === "Shape") {
       throw new Error("Cannot instantiate abstract class Shape directly");
     }
     this.name = name;

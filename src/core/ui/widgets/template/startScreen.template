@@ -1,0 +1,28 @@
+<style>
+    #start-button{
+        background-color: #9acd32;
+        border: none;
+        color: whitesmoke;
+        text-decoration: none;
+        text-align: center;
+        padding: 24px 30px;
+        margin: 24px 12px;
+        cursor: pointer;
+        border: 2px;
+        border-color: black;
+        border-radius: 15%;
+    }
+    #start-button:hover{
+        background-color: #85b22a;
+    }
+    #start-window{
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center; /* Centers vertically */
+  height: 100vh; /* Example: full viewport height */
+
+    }
+</style>
+<div id="start-window">
+    <button id="start-button">Start</button>
+</div>

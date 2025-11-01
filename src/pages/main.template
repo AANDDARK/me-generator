@@ -1,6 +1,6 @@
-<div>
-    <h1>Hi</h1>
-    <question-span>
+<div id="main">
+    <start-screen id="first"></start-screen>
+    <div id="answer-el">
         
-    </question-span>
+    </div>
 </div>

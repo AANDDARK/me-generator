@@ -1,4 +1,4 @@
-import ShapeCuboid from "./dto/shapeCuboid";
+import ShapeCuboid from "./dto/shapeCuboid.js";
 
 export default class Rhombus extends ShapeCuboid {
   #sides;
@@ -33,28 +33,27 @@ export default class Rhombus extends ShapeCuboid {
     if (!this.#angle) {
       throw new Error("need angle for diagonal");
     }
+    const side = this.#sides[0];
+    const angleInDegrees = this.#angle;
     if (side <= 0 || angleInDegrees <= 0 || angleInDegrees >= 180) {
       throw new Error(
         "Invalid input: side must be positive, angle must be between 0° and 180°",
       );
     }
-
     const angleRad = (angleInDegrees * Math.PI) / 180;
-
     const d1 = 2 * side * Math.sin(angleRad / 2);
     const d2 = 2 * side * Math.cos(angleRad / 2);
-
     return {
-      diagonal1: d1,
-      diagonal2: d2,
+      diagonal1: Math.round(d1),
+      diagonal2: Math.round(d2),
     };
   }
 
   area() {
     const diagonals = this.diagonal();
-    return (diagonals.diagonal1 * diagonals.diagonal2) / 2;
+    return Math.round((diagonals.diagonal1 * diagonals.diagonal2) / 2);
   }
-  perimeter(){
-    return this.#sides[0] * 4
+  perimeter() {
+    return Math.round(this.#sides[0] * 4);
   }
 }
