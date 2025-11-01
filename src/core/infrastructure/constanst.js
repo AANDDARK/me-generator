@@ -4,7 +4,7 @@
  * @typedef {Object} QE
  * @property {string} text - The question text. Use `%d` placeholders for numeric values.
  * @property {number} countOfDigit - Number of numeric values required for this question.
- * @property {string} on
+ * @property {string} on - Task type identifier
  */
 
 /**
@@ -31,9 +31,50 @@ questions.set("square", [
     on: "ondiagonal"
   },
   {
-    text: "Can a square exist with sides %d and %d?",
+    text: "Can a square exist with sides %d, %d, %d, and %d? (answer: yes or no)",
+    countOfDigit: 4,
+    on: "oncanexist"
+  }
+]);
+
+questions.set("rectangle", [
+  {
+    text: "The perimeter of a rectangle with sides %d and %d is ___",
     countOfDigit: 2,
-    on: "oncanable"
+    on: "onperimeter"
+  },
+  {
+    text: "The area of a rectangle with sides %d and %d is ___",
+    countOfDigit: 2,
+    on: "onarea"
+  },
+  {
+    text: "The diagonal of a rectangle with sides %d and %d is ___",
+    countOfDigit: 2,
+    on: "ondiagonal"
+  },
+  {
+    text: "Can a rectangle exist with sides %d, %d, %d, and %d? (answer: yes or no)",
+    countOfDigit: 4,
+    on: "oncanexist"
+  }
+]);
+
+questions.set("rhombus", [
+  {
+    text: "The perimeter of a rhombus with side %d is ___",
+    countOfDigit: 1,
+    on: "onperimeter"
+  },
+  {
+    text: "The area of a rhombus with side %d and angle %d° is ___",
+    countOfDigit: 2,
+    on: "onarea"
+  },
+  {
+    text: "Can a rhombus exist with sides %d, %d, %d, and %d? (answer: yes or no)",
+    countOfDigit: 4,
+    on: "oncanexist"
   }
 ]);
 
@@ -42,4 +83,5 @@ questions.set("square", [
  *
  * @type {string[]}
  */
-export const shapes = ["square"];
+export const shapes = ["square", "rectangle", "rhombus"];
+

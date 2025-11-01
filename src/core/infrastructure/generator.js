@@ -1,37 +1,32 @@
 import { questions, shapes } from "./constanst.js";
 
 /**
- * Generates an array of random integers (0–98).
- *
- * @function digitGenerator
- * @param {number} countOfDigits - The number of random digits to generate.
- * @returns {number[]} An array of randomly generated digits.
- *
- * @example
- * digitGenerator(3);
- * // ➜ [12, 87, 45]
+ * Generates an array of random integers (1–99).
+ * @param {number} countOfDigits
+ * @returns {number[]}
  */
 function digitGenerator(countOfDigits) {
   const digits = [];
-  let count = 0;
-  while (count < countOfDigits) { 
-    digits.push(Math.floor(Math.random() * 99));
-    count++;
+  for (let i = 0; i < countOfDigits; i++) {
+    // Generate from 1 to 99 (avoid 0 for geometry)
+    digits.push(Math.floor(Math.random() * 99) + 1);
   }
   return digits;
 }
 
 /**
- * Replaces all `%d` placeholders in a string with numbers from a provided array.
- *
- * @function TaskParser
- * @param {string} text - The text that contains `%d` placeholders.
- * @param {number[]} values - The values to substitute into the text.
- * @returns {string} The parsed text with `%d` replaced by numbers.
- *
- * @example
- * TaskParser("Add %d and %d", [5, 3]);
- * // ➜ "Add 5 and 3"
+ * Generates a random angle between 30° and 150° for rhombus
+ * @returns {number}
+ */
+function angleGenerator() {
+  return Math.floor(Math.random() * 120) + 30; // 30-150 degrees
+}
+
+/**
+ * Replaces all `%d` placeholders in a string with numbers.
+ * @param {string} text
+ * @param {number[]} values
+ * @returns {string}
  */
 function TaskParser(text, values) {
   let countOfChangebles = 0;
@@ -40,46 +35,43 @@ function TaskParser(text, values) {
 
 /**
  * Generates a math question based on a given shape.
- *
- * @function generator
- * @param {string} shape - The shape category to pick the question from.
- * @throws {Error} Throws an error if the shape does not exist.
- * @returns {{question: string, on: string, digits: number[]}}
- *          Returns an object with the generated question, a label (`on`),
- *          and the digits used.
- *
- * @example
- * generator("triangle");
- * // ➜ { question: "The sum of %d and %d", on: "triangle", digits: [43, 18] }
+ * @param {string} shape
+ * @returns {{question: string, on: string, digits: number[], angle?: number}}
  */
 export default function generator(shape) {
   const texts = questions.get(shape);
 
-  if (!texts) throw new Error(`Unknown shape: ${shape}`);
+  if (!texts) {
+    throw new Error(`Unknown shape: ${shape}`);
+  }
 
-  const int = Math.floor(Math.random() * texts.length);
-  const digits = digitGenerator(texts[int].countOfDigit);
+  const randomIndex = Math.floor(Math.random() * texts.length);
+  const selectedQuestion = texts[randomIndex];
+  
+  const digits = digitGenerator(selectedQuestion.countOfDigit);
+  
 
-  return {
-    question: TaskParser(texts[int].text, digits),
-    on: texts[int].on,
+  const result = {
+    question: TaskParser(selectedQuestion.text, digits),
+    on: selectedQuestion.on,
     digits
   };
+  
+
+  if (shape === "rhombus" && selectedQuestion.on === "onarea") {
+    result.angle = angleGenerator();
+  
+    result.question = TaskParser(selectedQuestion.text, [...digits, result.angle]);
+  }
+  
+  return result;
 }
 
 /**
- * Selects a random shape from the `shapes` array.
- *
- * @function randomShape
- * @returns {string} A random shape string.
- *
- * @example
- * randomShape();
- * // ➜ "circle"
+ * Selects a random shape from the shapes array.
+ * @returns {string}
  */
 export function randomShape() {
-  const int = Math.floor(Math.random() * shapes.length);
-  return shapes[int];
+  const randomIndex = Math.floor(Math.random() * shapes.length);
+  return shapes[randomIndex];
 }
-
-
