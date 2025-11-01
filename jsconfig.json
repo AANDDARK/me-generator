@@ -2,5 +2,5 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "ES6"
-  },
+  }
 }
