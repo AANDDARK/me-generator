@@ -1,5 +1,10 @@
 <div id="main">
     <start-screen id="first"></start-screen>
+    <div>
+        <canvas id="geo-canvas" width="300" height="300">
+
+        </canvas>
+    </div>
     <div id="answer-el">
         
     </div>

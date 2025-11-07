@@ -46,11 +46,11 @@ class TaskService {
     const result = handler();
     this.#currentShape = result.shape;
     this.#currentTask = result.task;
+    console.log(result)
     return result;
   }
 
   #handleSquare(taskData) {
-    // console.log(taskData.digits) 
     const shape = new Square(taskData.digits);
     const answer = this.#getShapeAnswer(shape, taskData.on);
 
@@ -61,7 +61,7 @@ class TaskService {
   }
 
   #handleRectangle(taskData) {
-    const shape = new Rectangle("rectangle", taskData.digits);
+    const shape = new Rectangle(taskData.digits );
     const answer = this.#getShapeAnswer(shape, taskData.on);
 
     return {
@@ -71,7 +71,7 @@ class TaskService {
   }
 
   #handleRhombus(taskData) {
-    const shape = new Rhombus("rhombus", taskData.digits, taskData.angle);
+    const shape = new Rhombus(taskData.digits, taskData.angle);
     const answer = this.#getShapeAnswer(shape, taskData.on);
 
     return {
@@ -104,7 +104,7 @@ class TaskService {
   getCurrentTask() {
     return this.#currentTask;
   }
-
+  
   getCurrentShape() {
     return this.#currentShape;
   }

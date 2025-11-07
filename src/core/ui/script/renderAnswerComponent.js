@@ -14,6 +14,13 @@ document.body.addEventListener("start", () => {
   
   const { shape, task } = service.generateTask();
 
+  document.body.dispatchEvent(new CustomEvent("renderCanvas", {
+    bubbles: true,
+    composed: true,
+    detail: {
+      shape: shape
+    }
+  }));
   
   const answerEl = document.getElementById("answer-el");
   

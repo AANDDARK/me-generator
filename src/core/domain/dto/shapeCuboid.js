@@ -21,7 +21,9 @@ export default class ShapeCuboid {
   diagonal() {
     throw new Error(`${this.name}: Method 'diagonal()' must be implemented`);
   }
-
+  canExist(){
+    throw new Error(`${this.name}: Method 'canExist()' must be implemented`);
+  }
   info() {
     this.validate();
 

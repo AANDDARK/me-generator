@@ -1,2 +1,3 @@
 
-import './renderAnswerComponent.js'
+import './renderAnswerComponent.js' 
+import "./renderCanvas.js"
