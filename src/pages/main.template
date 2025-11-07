@@ -9,3 +9,10 @@
         
     </div>
 </div>
+<style>
+#main{
+    display: grid;  
+  place-content: center;
+}
+
+</style>

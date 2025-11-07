@@ -25,8 +25,7 @@ document.body.addEventListener("start", () => {
   const answerEl = document.getElementById("answer-el");
   
   if (answerEl) {
-    answerEl.innerHTML = `
-      <span>write the rounded number</span>
+    answerEl.innerHTML = `  
       <answer-field>
         <span slot="question">${task.text}</span>
       </answer-field>
